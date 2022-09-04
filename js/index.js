@@ -1,16 +1,28 @@
 const loadALlNews = async () => {
-    const url = `https://openapi.programming-hero.com/api/news/categories`;
-    const res = await fetch(url);
-    const data = await res.json();
-    return data
+    try {
+        const url = `https://openapi.programming-hero.com/api/news/categories`;
+        const res = await fetch(url);
+        const data = await res.json();
+        return data
+    } catch (error) {
+        console.error(error);
+    }
     // console.log(data.data.news_category[2].category_name);
     // displayNewsDataApi(data.data);
 }
 /*-------------- menu & catagory select--------------*/
+const uniqueArray = [];
+console.log(uniqueArray.length);
+const dinamicItemValue = () => {
+    const value = document.getElementById("dinamic-Velue")
+    value.innerText = `${uniqueArray.length}`
+
+}
+dinamicItemValue()
 const setAllMenu = async () => {
     const data = await loadALlNews();
     const AllMenu = document.getElementById('New-menu')
-    const uniqueArray = [];
+
     for (const NewsItem of data.data.news_category) {
         /*--------------create menu--------------*/
         if (uniqueArray.indexOf(NewsItem.category_name) === -1) {
@@ -23,7 +35,6 @@ const setAllMenu = async () => {
     }
 }
 setAllMenu();
-const valueNews = document.getElementById
 const menubar = (category_id) => {
     // console.log(category_id);
     fetch(`https://openapi.programming-hero.com/api/news/category/${category_id}`)
@@ -58,7 +69,7 @@ const diplayNews = allNews => {
                 <div class="text-sm">
                     <p class="text-gray-900 leading-none">${news.author.name}</p>
 
-                    <p class="text-gray-600">${news.author.published_date}</p>
+         
                 </div>
             </div>
             <div class="flex items-center ">
@@ -106,7 +117,27 @@ const diplayNews = allNews => {
                 </p>
               </div>
               <!--footer-->
-              <div class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+              <div class="flex items-center justify-between p-6 border-t border-solid border-slate-200 rounded-b">
+              <p class="text-gray-900 leading-none">${news.author.name}</p>
+
+              <p class="text-gray-600">${news.author.published_date}</p>
+              <div class="flex items-center ">
+            <i class="fa fa-eye mr-4 mt-1" aria-hidden="true"></i>
+                <div class="text-sm">
+                    <p class="text-gray-600">${news.total_view}</p>
+                </div>
+            </div>
+            <div class="flex items-center md:d-none">
+                <div class="flex items-center">
+                
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <div class="text-sm">
+                </div>
+            </div>
                 <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id')">
                   Close
                 </button>
@@ -129,7 +160,28 @@ const diplayNews = allNews => {
         newsContainer.appendChild(newsDiv);
 
     });
+    // toggleSpinner(false)
 }
+/*-------------Spiner section-------------------*/
+/* const toggleSpinner = isLoading => {
+//     const loaderSection = document.getElementById('loader');
+//     if (isLoading) {
+//         loaderSection.classList.remove('hidden')
+//     }
+//     else {
+//         loaderSection.classList.add('hidden')
+//     }
+// }
+*/
+
+
+
+
+// array.sort(function (a, b) {
+//     // Turn your strings into dates, and then subtract them
+//     // to get a value that is either negative, positive, or zero.
+//     return new (b.date) - new (a.date);
+// });
 // loadALlNews()
 function toggleModal(modalID) {
     document.getElementById(modalID).classList.toggle("hidden");
