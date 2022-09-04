@@ -174,7 +174,7 @@ const diplayNews = allNews => {
 
 
 
-
+/*-------------value pass */
 
 // array.sort(function (a, b) {
 //     // Turn your strings into dates, and then subtract them
