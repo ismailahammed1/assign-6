@@ -14,8 +14,9 @@ const loadALlNews = async () => {
 const uniqueArray = [];
 console.log(uniqueArray.length);
 const dinamicItemValue = () => {
-    const valueArray = document.getElementById("dinamic-Velue").innerText = uniqueArray.length;
-    console.log(valueArray);
+    const value = document.getElementById("dinamic-Velue")
+    value.innerText = `${uniqueArray.length}`
+
 }
 dinamicItemValue()
 const setAllMenu = async () => {
@@ -49,7 +50,6 @@ const diplayNews = allNews => {
     allNews.forEach(news => {
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('w-full', 'lg:max-w-full', 'lg:flex');
-        /*news section create*/
         newsDiv.innerHTML = `
         <div
         class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
@@ -160,10 +160,9 @@ const diplayNews = allNews => {
         newsContainer.appendChild(newsDiv);
 
     });
-    // toggleSpinner(false)
 }
 /*-------------Spiner section-------------------*/
-/* const toggleSpinner = isLoading => {
+// const toggleSpinner = isLoading => {
 //     const loaderSection = document.getElementById('loader');
 //     if (isLoading) {
 //         loaderSection.classList.remove('hidden')
@@ -172,7 +171,7 @@ const diplayNews = allNews => {
 //         loaderSection.classList.add('hidden')
 //     }
 // }
-*/
+
 
 
 
