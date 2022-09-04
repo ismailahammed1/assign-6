@@ -14,9 +14,8 @@ const loadALlNews = async () => {
 const uniqueArray = [];
 console.log(uniqueArray.length);
 const dinamicItemValue = () => {
-    const value = document.getElementById("dinamic-Velue")
-    value.innerText = `${uniqueArray.length}`
-
+    const valueArray = document.getElementById("dinamic-Velue").innerText = uniqueArray.length;
+    console.log(valueArray);
 }
 dinamicItemValue()
 const setAllMenu = async () => {
