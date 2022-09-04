@@ -50,6 +50,7 @@ const diplayNews = allNews => {
     allNews.forEach(news => {
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('w-full', 'lg:max-w-full', 'lg:flex');
+        /*news section create*/
         newsDiv.innerHTML = `
         <div
         class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
